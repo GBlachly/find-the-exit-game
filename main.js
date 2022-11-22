@@ -80,6 +80,12 @@ class Field {
         //Define starter variables
         let randomField = [];
         const totalHoles = (percentage/100)*height*width;
+        const totalSpaces = height*width;
+
+        //Throw Error to avoid infinite loop
+        if (totalHoles > totalSpaces-2) {
+            throw new Error('Percentage of holes is too high')
+        };
 
         //Create field without holes/player/hat
         for (let i = 0; i < height; i++) {
