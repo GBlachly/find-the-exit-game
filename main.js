@@ -77,11 +77,11 @@ class Field {
     }
 
     static generateField(height = 10, width = 10, percentage = 30) {
-        //Define Variables
+        //Define starter variables
         let randomField = [];
         const totalHoles = (percentage/100)*height*width;
 
-        //Create Field without holes/player/hat
+        //Create field without holes/player/hat
         for (let i = 0; i < height; i++) {
             randomField.push(['']);
         };
@@ -91,17 +91,21 @@ class Field {
             };
         };
 
+        //Add player/hat
+        randomField[0][0] = '*';
+        randomField[height-1][width-1] = '^';
+
         //Add random holes
-        for (let m = 0; m < totalHoles; m++) {
+        let counter = 0;
+        while (counter < totalHoles) {
             let randomIndex1 = Math.floor(Math.random()*height);
             let randomIndex2 = Math.floor(Math.random()*width);
-            randomField[randomIndex1][randomIndex2] = 'O';
-        }
+            if (randomField[randomIndex1][randomIndex2] ==='░') {
+                randomField[randomIndex1][randomIndex2] = 'O';
+                counter++;
+            }
+        };
 
-        //Add player/hat
-        randomField[0][0] = '*'
-        randomField[height-1][width-1] = '^';
-        
         return randomField;
     }
 };
