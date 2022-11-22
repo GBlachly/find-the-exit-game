@@ -79,7 +79,6 @@ class Field {
     static generateField(height = 10, width = 10, percentage = 30) {
         //Define Variables
         let randomField = [];
-        const totalspaces = height*width;
         const totalHoles = (percentage/100)*height*width;
 
         //Create Field without holes/player/hat
